@@ -10,6 +10,28 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: admin
+          POSTGRES_DB: devops_class
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    env:
+      DB_HOST: localhost
+      DB_USER: postgres
+      DB_PASSWORD: admin
+      DB_NAME: devops_class
+      DB_PORT: 5432
+
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -22,6 +44,12 @@ jobs:
 
     - name: Install Dependencies
       run: npm install
+
+    - name: Setup Database
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y postgresql-client
+        PGPASSWORD=admin psql -h localhost -U postgres -d devops_class -f src/database/schema.sql
 
     - name: Run Lint
       run: npm run lint
