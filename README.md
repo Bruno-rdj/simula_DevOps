@@ -102,3 +102,17 @@ Antes de partir para o Terraform, você pode rodar o projeto em sua máquina.
     npm start
     ```
 A API estará disponível em `http://localhost:3000`.
+
+## 6. Como Entregar o Exercício
+
+O exercício deve ser entregue através de um **Pull Request** a partir de um **fork** deste repositório.
+
+1.  **Faça um Fork:** Crie um fork deste repositório para a sua conta pessoal no GitHub.
+2.  **Clone o seu Fork:** Clone o repositório forkado para a sua máquina local.
+3.  **Realize as Tarefas:** Implemente o pipeline de CI/CD e a infraestrutura como código conforme descrito na sua missão.
+4.  **Teste no seu Repositório:** Antes de entregar, garanta que o pipeline do GitHub Actions está passando no *seu* repositório forkado. Verifique se a infraestrutura sobe corretamente com `terraform apply` e se a aplicação fica acessível.
+5.  **Crie o Pull Request:** Após validar tudo, crie um Pull Request do seu fork para a branch `main` do repositório original.
+
+### IMPORTANTE
+
+**Você não deve alterar o código da aplicação** (os arquivos dentro de `src/`). Sua função neste exercício é exclusivamente de **DevOps**. O código da aplicação é de responsabilidade do time de desenvolvimento. Seu papel é criar a automação e a infraestrutura para que esse código seja entregue e executado de forma confiável.
